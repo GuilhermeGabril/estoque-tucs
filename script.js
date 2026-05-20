@@ -7,6 +7,7 @@ form.addEventListener("submit", async (e) => {
     nome: document.getElementById("nome").value,
     qtd: parseInt(document.getElementById("qtd").value),
     categoria: document.getElementById("categoria").value,
+    detalhamento: document.getElementById("detalhamento").value, // NOVO CAMPO
     link: document.getElementById("link").value
   };
 
@@ -24,14 +25,12 @@ form.addEventListener("submit", async (e) => {
       body: JSON.stringify(data)
     });
 
-    // Log para inspecionar o objeto de resposta (deve aparecer type: "opaque")
     console.log("Resposta recebida do fetch (modo no-cors):", response);
 
     alert("Salvo com sucesso!");
     form.reset();
 
   } catch (err) {
-    // Este log só dispara se a URL estiver errada ou se você estiver totalmente sem internet
     console.error("Erro crítico detectado no catch do bloco fetch:", err);
     alert("Erro ao conectar com o servidor.");
   }
